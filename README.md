@@ -29,7 +29,7 @@ Are maintained in associated github repos
 
 ## Our Timeline
 
-This project is run in accordance with the Australian government digital transformation office methodology .  We kicked off early May 2016 with the "discovery" phase and we aim to deliver the following milestones
+This project is run in accordance with the Australian government digital transformation office [service design and delivery methodology](https://www.dto.gov.au/standard/service-design-and-delivery-process/).  We kicked off early May 2016 with the "discovery" phase and we aim to deliver the following milestones:
 - "alpha" REST API specification for all services by June 30 2016 (registry publishing, trading agreements, end-point lookup, and e-invoice transaction)
 - "alpha" implementation prototypes of the SMP register and e-invoice service end points by July 31 2016.
 - "beta" REST API specification (updated with lessons learned from the alpha implementation) by 15 August 2016
@@ -45,5 +45,5 @@ The team so far
 * Westpac, one of Australia's largest financial institutions.  Bringing their experience as the operation of the largest superannuation B2B gateway and as a founder member of the NPP (new payments platform) which will revolutionize payments in Australia
 * the department of industry innovation and science. As the chair of the e-invoicing governance group, the department will ensure open governance for the project. The department also provides the VanGuard service which can validate ABN ownership and so inject trust into the network.
 
-Please contact @onthebreeze to join this effort.
+This working group is led by Steve Capell.  Please contact me via [linkedIn](https://au.linkedin.com/in/stevecapell) if you'd like to contribute to this effort.
 

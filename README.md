@@ -1,15 +1,19 @@
 # eInvoice REST API
-This page documents a national e-Invoicing REST API standard.  The work is governed by the [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/).
+This repo documents the development of an Australian National e-Invoicing standard, which will utilise simple RESTful APIs where appropriate.  This work is governed by the [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/).
 
-The basic idea is that accounting software product vendors will build support for the standard so that any business can send an invoice to any other business so long as they know each other's business identifier (usually an ABN) and, optionally, have established a trading agreement to exchange electronic documents.  
+Development of an industry-led standard will enable accounting software product vendors to offer new services that: 
+* allow any business to send an e-invoice to any other business if they know the other business' unique identifier (usually an ABN)
+* (optionally) allow businesses to publicly indicate that a pre-existing trading agreement must exist between themselves and another party, before they will exchange electronic documents and invoices with said party.  
 
 ## How it works
-It works like a city phone book.  If party A wants to send an invoice to party B then party A will lookup the invoice service information for party B in the registry and then send the invoice to the specified location using mutually supported technical standards.  
-* Each party publishes information about their invoice service (supported documents & transports, certificates, URL end points) to a registry.  In most cases, the accounting software package will do this for their customers.  The registry entry is only updated whenever there is a change to any party's technical profile.
+It works like a city phone book.  If party A wants to send an invoice to party B, party A looks up the invoice service information of party B in a registry and sends the invoice to the location, and using the technical standards, specified in the registry.  
+* Each party publishes information about their invoicing capabilities (supported documents & transports, certificates, URL end points) to a registry.  In most cases, we envisage that software packages will manage this process on behalf of their customers.  
+* A registry entry can be updated by the business itself, or third-parties granted authorisation by the business. Updates will generally occur when there is a change to a party's technical profile.
 * Optionally, a party may specify (via their service information registry entry) that a trading agreement is required before they will accept electronic documents.  In such cases, either party can initiate the trading request and, if agreed by the other party, the whitelist is updated with the relevant identifiers and the parties can exchange documents.
-* Bidirectional document excahnge happens simply by looking up the other party's service data and certificate, encrypting the invoice data and sending it to the other oarty.
-* Note that all interfaces are implemented as RESTFul services in accoridance with the [Australian Government API design guide](https://www.dto.gov.au/standard/design-guides/api/)
-* .
+* Bidirectional document excahnge entails looking up the other party's service data and public key/certificate, encrypting the invoice data and sending it to the other party.
+* Publishing public keys/certificates on a central registry will allow transacting parties to authenticate one another and verify the authenticity of electronic documents received (e.g. via digital signing).
+* All interfaces will be implemented as simple REST APIs that conform to the [Australian Government API design guide](https://www.dto.gov.au/standard/design-guides/api/).
+
 ![Overview](eInvoiceOverview.png)
 
 ## The API specifications

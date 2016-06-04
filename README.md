@@ -1,4 +1,4 @@
-# eInvoice REST API
+# eInvoice REST API Framework Documentation
 This repo documents the development of an Australian National e-Invoicing standard, which will utilise simple RESTful APIs where appropriate.  This work is governed by the [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/).
 
 Development of an industry-led standard will enable accounting software product vendors to offer new services that: 

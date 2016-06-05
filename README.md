@@ -49,5 +49,8 @@ The team so far
 * Westpac, one of Australia's largest financial institutions.  Bringing their experience as the operation of the largest superannuation B2B gateway and as a founder member of the NPP (new payments platform) which will revolutionize payments in Australia
 * the department of industry innovation and science. As the chair of the e-invoicing governance group, the department will ensure open governance for the project. The department also provides the VanGuard service which can validate ABN ownership and so inject trust into the network.
 
-This working group is led by Steve Capell.  Please contact me via [linkedIn](https://au.linkedin.com/in/stevecapell) if you'd like to contribute to this effort.
+## How to Participate
+* Raise a Github issue in any of the project repositories.  Or
+* Make a pull request with your suggested changes.  Or
+* Contact [the project lead](https://github.com/onthebreeze)
 

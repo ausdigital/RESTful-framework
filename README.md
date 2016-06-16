@@ -18,7 +18,9 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 
 ## The API specifications
 
-Are published to [swaggerhub](https://swaggerhub.com/api/ausdigital/invoice/0.1).
+Are published to SwaggerHub:
+* [SMP](https://swaggerhub.com/api/ausdigital/smp/0.1)
+* [Invoicing](https://swaggerhub.com/api/ausdigital/invoice/0.1).
 
 Sequence diagrams and a little more details "how it works" information is provided for each of the three phases in the overview:
 * [Publishing to the registry](publishing.md)

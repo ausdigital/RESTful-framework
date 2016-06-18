@@ -16,7 +16,7 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 
 ![Overview](eInvoiceOverview.png)
 
-## The API specifications
+## The API Specifications
 
 Are published to SwaggerHub:
 * [SMP](https://swaggerhub.com/api/ausdigital/smp/0.1)
@@ -26,6 +26,12 @@ Sequence diagrams and a little more details "how it works" information is provid
 * [Publishing to the registry](publishing.md)
 * [Trading agreements](agreements.md)
 * [e-invoice transaction](transactions.md)
+
+## the Security Model
+
+The REST Specification uses OIDC identity providers (initially www.vanguard.gov.au) to confirm identity and obtain explicit authorisation of participating businesses.  It also uses PKI (using Vanguard replying party certificates) to achieve end-to-end message inttegroty and confidentiality.   
+
+* [Security Model](end-to-end-security.md)
 
 ## The Reference Implementations
 

@@ -44,6 +44,8 @@ The main concerns that the security model needs to address are:
 * Availability.  That the network is avaialable, even when specific buyer or seller sysems are unavailable.
 
 The REST e-invoicing specification meets all these requirements with very high integrity and efficiency using a completely paperless and automated process.  A key feature is that the framework does not depend on trust of intermediaries (eg access points or registries) to achieve end-to-end trust.  This both reduces the barriers to entry for competition in the service provider marketplace and increases overall security.
+* Registry integrity is provided using [VANguard](http://vanguard.business.gov.au/) as an OIDC provider that confirms identity and authorisation prior to alloing an update.
+* Transaction integrity is provided via PKI using certificates published to the registry to sign all messages with a verifiable chain of trust.
 
 ## Our Timeline
 

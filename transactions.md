@@ -21,4 +21,13 @@ The use case for the secure exchange of the e-invoice and the business response 
 * user: If a demand for future payment, then ACME Pty Ltd accounts payable staff review / reconcile the invoice and follow their usual internal approval processes.
 * system: Once processed, BizAccounts creates an response document that is returned to the seller party via the same process in reverse (ie BizAccounts will lookup, sign & send - then ProFinancials will verify signature and reconcile against the invoice).
 
+## A Note About Routing
+
+The RESTful implementation makes a key assumption that the access point URL path for POSTing a document contains whatever information the access point needs to deal with the document.  Typcially that means the URL should include information identifying the document type, business process, and the recipient business.  For example, in the URL below, document type is "invoice-1", process is "purchase", and recipient business identifier is 23601120601.
+
+```
+"EndpointURI": "https://api.accounts.com/au/essentials/businesses/23601120601/purchase/invoice-1"
+```
+
+Note that the sender party (ie who the document is from) is not in the end-point URL path (it would make no sense to do so).  Instead that information is in the body of the invoice document.  The ultimate receiver system will process the document and, where appropriate use the same registry lookup and RESTful transport to send response documents to the sender party.
 

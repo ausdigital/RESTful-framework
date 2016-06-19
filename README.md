@@ -18,26 +18,32 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 
 ## The API Specifications
 
-Are published to SwaggerHub:
+RESTful API Specifications are published to SwaggerHub:
 * [SMP](https://swaggerhub.com/api/ausdigital/smp/0.1)
 * [Invoicing](https://swaggerhub.com/api/ausdigital/invoice/0.1).
 
-Sequence diagrams and a little more details "how it works" information is provided for each of the three phases in the overview:
-* [Publishing to the registry](publishing.md)
+## Detailed Process Descriptions
+
+Sequence diagrams and a little more detailed "how it works" information is provided for each of the three phases in the overview:
+* [Registry updates and lookups](publishing.md)
 * [Trading agreements](agreements.md)
 * [e-invoice transaction](transactions.md)
-
-## the Security Model
-
-The REST Specification uses OIDC identity providers (initially www.vanguard.gov.au) to confirm identity and obtain explicit authorisation of participating businesses.  It also uses PKI (using Vanguard replying party certificates) to achieve end-to-end message inttegroty and confidentiality.   
-
-* [Security Model](end-to-end-security.md)
 
 ## The Reference Implementations
 
 Are maintained in associated github repos
-* [The SMP register](https://github.com/ausdigital/einvoice-ref-smp)
-* [The e-invoice end point](https://github.com/ausdigital/einvoice-ref-api)
+* [A Digital Capability Publisher](https://github.com/ausdigital/einvoice-ref-smp)
+* [A e-Invoice Access Point](https://github.com/ausdigital/einvoice-ref-api)
+
+## The Security Model
+
+The main concerns that the security model needs to address are:
+* Registry integrity.  That users of the registry can trust that service information about a business genuinely belongs to that business and that the entry has been authorised by that business.
+* Message integrity.  That the recipient of an invoice can trust that the invoice really came from the identified business and hasn't been tampered with.
+* Auditability.  That there is an evidence trail for updates to the registry and invoice message routing.
+* Availability.  That the network is avaialable, even when specific buyer or seller sysems are unavailable.
+
+The REST e-invoicing specification meets all these requirements with very high integrity and efficiency using a completely paperless and automated process.  A key feature is that the framework does not depend on trust of intermediaries (eg access points or registries) to achieve end-to-end trust.  This both reduces the barriers to entry for competition in the service provider marketplace and increases overall security.
 
 ## Our Timeline
 

@@ -19,8 +19,8 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 ## The API Specifications
 
 RESTful API Specifications are published to SwaggerHub:
-* [SMP](https://swaggerhub.com/api/ausdigital/smp/0.1)
-* [Invoicing](https://swaggerhub.com/api/ausdigital/invoice/0.1).
+* [Digital Capability Publisher](https://swaggerhub.com/api/ausdigital/smp/0.1)
+* [e-Invoicing Transaction](https://swaggerhub.com/api/ausdigital/invoice/0.1).
 
 ## Detailed Process Descriptions
 

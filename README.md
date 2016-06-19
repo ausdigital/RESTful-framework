@@ -19,27 +19,27 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 ## The API Specifications
 
 RESTful API Specifications are published to SwaggerHub:
-* [Digital Capability Publisher](https://swaggerhub.com/api/ausdigital/smp/0.1)
-* [e-Invoicing Transaction](https://swaggerhub.com/api/ausdigital/invoice/0.1).
+* [Registry publish and lookup](https://swaggerhub.com/api/ausdigital/smp/0.1)
+* [e-Invoicing transaction](https://swaggerhub.com/api/ausdigital/invoice/0.1).
 
 ## Detailed Process Descriptions
 
 Sequence diagrams and a little more detailed "how it works" information is provided for each of the three phases in the overview:
-* [Registry updates and lookups](publishing.md)
+* [Registry publish and lookup](publishing.md)
 * [Trading agreements](agreements.md)
-* [e-invoice transaction](transactions.md)
+* [e-Invoicing transaction](transactions.md)
 
 ## The Reference Implementations
 
 Are maintained in associated github repos
-* [A Digital Capability Publisher](https://github.com/ausdigital/einvoice-ref-smp)
-* [A e-Invoice Access Point](https://github.com/ausdigital/einvoice-ref-api)
+* [A registry implementation](https://github.com/ausdigital/einvoice-ref-smp)
+* [An e-Invoice access point](https://github.com/ausdigital/einvoice-ref-api)
 
 ## The Security Model
 
 The main concerns that the security model needs to address are:
 * Registry integrity.  That users of the registry can trust that service information about a business genuinely belongs to that business and that the entry has been authorised by that business.
-* Message integrity.  That the recipient of an invoice can trust that the invoice really came from the identified business and hasn't been tampered with.
+* Transaction integrity.  That the recipient of an invoice can trust that the invoice really came from the identified business and hasn't been tampered with.
 * Auditability.  That there is an evidence trail for updates to the registry and invoice message routing.
 * Availability.  That the network is avaialable, even when specific buyer or seller sysems are unavailable.
 

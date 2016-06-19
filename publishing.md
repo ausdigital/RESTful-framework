@@ -23,12 +23,12 @@ The Prerequisites are
 ![Service Metadata Publishing](ServiceMetadataPublish.png)
 
 The use case for updating BizRegister with an entry BizAccounts as the authorised e-invoicing end point for ACME is described below.  Steps tagged "user" are seen by the user whilst those tagged "system" are background OIDC interactions.
-1. user: ACME is logged in to their service provider at www.bizaccounts.com.au and clicks on an "enable e-invoicing" button.
-2. system: BizAccount makes an OIDC callback request to VANguard.
-3. user: ACME is redirected to VANguard.gov.au where they authenticate using their my.gov.au (sole traders) or AUSkey (other businesses). VANguard pops-up an authorisation dialog saying "BizAccounts would like to act as you e-invoicing service provider" with "Accept" or "Reject" actions.  ACME clicks "Accept".
-4. system: VANguard returns a signed JWT (JSON Web Token) to BizAccount that contains two "claims".  One is the verified ABN "1122334456" and the other is the explicitly authorised service "e-invoicing".
-5. system: BizAccounts calls the REST POST bizregister/1122334456/service end point to update ACME's service metadata and provides the signed JWT token as evidence of ACME's authority.  BizAccounts also provides their VANGuard RP certificate which will be published as the "certificate" element against the e-invoicjng end point for ACME.
-6. system: BizRegister verifies the JWT token against the VANguard service to confirm that ACME has indeed authorised BizAccounts to act as their e-invoice end point.  If OK, then BizRegister updates the entry for ACME.
+* user: ACME is logged in to their service provider at www.bizaccounts.com.au and clicks on an "enable e-invoicing" button.
+* system: BizAccount makes an OIDC callback request to VANguard.
+* user: ACME is redirected to VANguard.gov.au where they authenticate using their my.gov.au (sole traders) or AUSkey (other businesses). VANguard pops-up an authorisation dialog saying "BizAccounts would like to act as you e-invoicing service provider" with "Accept" or "Reject" actions.  ACME clicks "Accept".
+* system: VANguard returns a signed JWT (JSON Web Token) to BizAccount that contains two "claims".  One is the verified ABN "1122334456" and the other is the explicitly authorised service "e-invoicing".
+* system: BizAccounts calls the REST POST bizregister/1122334456/service end point to update ACME's service metadata and provides the signed JWT token as evidence of ACME's authority.  BizAccounts also provides their VANGuard RP certificate which will be published as the "certificate" element against the e-invoicjng end point for ACME.
+* system: BizRegister verifies the JWT token against the VANguard service to confirm that ACME has indeed authorised BizAccounts to act as their e-invoice end point.  If OK, then BizRegister updates the entry for ACME.
 
 it's important to note that, although this might seem complex, 
 * The user experience is simple - they just clicked the "enable e-invoicing" button in BizAccounts and proved their identity to VANguard.

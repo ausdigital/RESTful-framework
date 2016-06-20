@@ -265,6 +265,7 @@
           "$ref" : "#/definitions/ID"
         },
         "AccountingSupplierParty" : {
+          "name" : "AccountingSupplierParty",
           "properties" : {
             "Party" : {
               "$ref" : "#/definitions/Party"

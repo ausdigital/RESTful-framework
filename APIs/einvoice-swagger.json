@@ -265,6 +265,7 @@
           "$ref" : "#/definitions/ID"
         },
         "AccountingSupplierParty" : {
+          "title" : "AccountingSupplierParty",
           "properties" : {
             "Party" : {
               "$ref" : "#/definitions/Party"
@@ -425,7 +426,6 @@
       }
     },
     "Party" : {
-      "title" : "test",
       "properties" : {
         "PartyIdentification" : {
           "$ref" : "#/definitions/ID"

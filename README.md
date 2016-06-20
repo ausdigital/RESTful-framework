@@ -14,7 +14,7 @@ It works like a city phone book.  If party A wants to send an invoice to party B
 * Publishing public keys/certificates on a central registry will allow transacting parties to authenticate one another and verify the authenticity of electronic documents received (e.g. via digital signing).
 * All interfaces will be implemented as simple REST APIs that conform to the [Australian Government API design guide](https://www.dto.gov.au/standard/design-guides/api/).
 
-![Overview](eInvoiceOverview.png)
+![Overview](Documents/eInvoiceOverview.png)
 
 ## The API Specifications
 
@@ -25,9 +25,9 @@ RESTful API Specifications are published to SwaggerHub:
 ## Detailed Process Descriptions
 
 Sequence diagrams and a little more detailed "how it works" information is provided for each of the three phases in the overview:
-* [Registry publish and lookup](publishing.md)
-* [Trading agreements](agreements.md)
-* [e-Invoicing transaction](transactions.md)
+* [Registry publish and lookup](Documents/publishing.md)
+* [Trading agreements](Documents/agreements.md)
+* [e-Invoicing transaction](Documents/transactions.md)
 
 ## The Reference Implementations
 

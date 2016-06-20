@@ -295,6 +295,7 @@
           }
         },
         "PaymentMeans" : {
+          "title" : "Playment",
           "properties" : {
             "ID" : {
               "type" : "string"
@@ -358,6 +359,7 @@
       }
     },
     "InvoiceLine" : {
+      "title" : "InvoiceLine",
       "properties" : {
         "ID" : {
           "type" : "string"

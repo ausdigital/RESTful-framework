@@ -20,7 +20,7 @@
     "/services" : {
       "get" : {
         "summary" : "List all service groups",
-        "description" : "The service group returns a list of service metadata.  This service is optional and is typically used when the client does not have a-priori knowledge of which services the business supports.",
+        "description" : "The service group returns a list of service metadata entry points.  This service is optional and is typically used when the client does not have a-priori knowledge of which services the business supports.",
         "parameters" : [ {
           "name" : "abn",
           "in" : "query",

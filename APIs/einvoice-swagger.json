@@ -307,11 +307,13 @@
               "type" : "string"
             },
             "PayeeFinancialAccount" : {
+              "title" : "PayeeFinancialAccount",
               "properties" : {
                 "ID" : {
                   "type" : "string"
                 },
                 "FinancialInstitutionBranch" : {
+                  "title" : "FinancialInstitutionBranch",
                   "properties" : {
                     "ID" : {
                       "type" : "string"

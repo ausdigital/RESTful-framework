@@ -1,0 +1,265 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "0.1",
+    "title" : "Service Metadata Publisher",
+    "description" : "REST API implementation of Service Metadata Publisher"
+  },
+  "host" : "api.smp.com",
+  "schemes" : [ "https" ],
+  "basePath" : "/v1",
+  "securityDefinitions" : {
+    "apikey" : {
+      "type" : "apiKey",
+      "name" : "server_token",
+      "in" : "header"
+    }
+  },
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/services" : {
+      "get" : {
+        "summary" : "List all service groups",
+        "description" : "The service group returns a list of service metadata.  This service is optional and is typically used when the client does not have a-priori knowledge of which services the business supports.",
+        "parameters" : [ {
+          "name" : "abn",
+          "in" : "query",
+          "description" : "abn to filter by",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "duns",
+          "in" : "query",
+          "description" : "duns to filter by",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "operationId" : "findServiceGroups",
+        "responses" : {
+          "200" : {
+            "description" : "An array of service metadata",
+            "schema" : {
+              "$ref" : "#/definitions/ServiceGroup"
+            }
+          },
+          "406" : {
+            "description" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+          },
+          "500" : {
+            "description" : "Any appropriate HTTP server error"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a service metdata",
+        "description" : "Create an entry for a participant in the capability publisher",
+        "operationId" : "addServiceGroup",
+        "security" : [ {
+          "apikey" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "metadata",
+          "in" : "body",
+          "description" : "Service metadata to be added",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/NewServiceMetaData"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/services/{id}" : {
+      "get" : {
+        "summary" : "get a service metdata",
+        "description" : "Returns a service metadata based on a single ID",
+        "operationId" : "getServiceGroup",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of service metadata",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "service metadata response",
+            "schema" : {
+              "$ref" : "#/definitions/ServiceMetaData"
+            }
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "406" : {
+            "description" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+          },
+          "500" : {
+            "description" : "Any appropriate HTTP server error"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "delete a service metdata",
+        "description" : "deletes a single service metadata based on the ID supplied",
+        "operationId" : "deleteServiceGroup",
+        "security" : [ {
+          "apikey" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of service metadata to delete",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "service metadata deleted"
+          },
+          "404" : {
+            "description" : "Not Found"
+          },
+          "406" : {
+            "description" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+          },
+          "500" : {
+            "description" : "Any appropriate HTTP server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ServiceGroup" : {
+      "properties" : {
+        "ServiceMetaData" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ServiceMetaData"
+          }
+        },
+        "Signature" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ServiceMetaData" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/NewServiceMetaData"
+      } ],
+      "properties" : {
+        "id" : {
+          "description" : "Unique identifier for service metadata",
+          "type" : "string"
+        }
+      }
+    },
+    "NewServiceMetaData" : {
+      "required" : [ "ParticipantIdentifier" ],
+      "properties" : {
+        "ParticipantIdentifier" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ParticipantIdentifier"
+          }
+        },
+        "DocumentIdentifier" : {
+          "$ref" : "#/definitions/DocumentIdentifier"
+        },
+        "ProcessList" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Process"
+          }
+        }
+      }
+    },
+    "Process" : {
+      "properties" : {
+        "ProcessIdentifier" : {
+          "$ref" : "#/definitions/ProcessIdentifier"
+        },
+        "ServiceEndpointList" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ServiceEndpoint"
+          }
+        }
+      }
+    },
+    "ServiceEndpoint" : {
+      "properties" : {
+        "transportProfile" : {
+          "type" : "string"
+        },
+        "EndpointURI" : {
+          "type" : "string"
+        },
+        "RequireBusinessLevelSignature" : {
+          "type" : "string"
+        },
+        "MinimumAuthenticationLevel" : {
+          "type" : "number"
+        },
+        "Certificate" : {
+          "type" : "string"
+        },
+        "ServiceDescription" : {
+          "type" : "string"
+        },
+        "TechnicalInformationUrl" : {
+          "type" : "string"
+        },
+        "ServiceActivationDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "ServiceExpirationDate" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      }
+    },
+    "ProcessIdentifier" : {
+      "properties" : {
+        "scheme" : {
+          "type" : "string",
+          "description" : "The scheme of the identifier"
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "The unique ID within the scheme"
+        }
+      }
+    },
+    "DocumentIdentifier" : {
+      "properties" : {
+        "scheme" : {
+          "type" : "string",
+          "description" : "The scheme of the identifier"
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "The unique ID within the scheme"
+        }
+      }
+    },
+    "ParticipantIdentifier" : {
+      "properties" : {
+        "scheme" : {
+          "type" : "string",
+          "description" : "The scheme of the identifier"
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "The unique ID within the scheme"
+        }
+      }
+    }
+  }
+}

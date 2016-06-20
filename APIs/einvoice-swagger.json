@@ -265,7 +265,7 @@
           "$ref" : "#/definitions/ID"
         },
         "AccountingSupplierParty" : {
-          "title" : "AccountingSupplierParty",
+          "title" : "Suppier Party",
           "properties" : {
             "Party" : {
               "$ref" : "#/definitions/Party"
@@ -273,6 +273,7 @@
           }
         },
         "AccountingCustomerParty" : {
+          "title" : "Buyer Party",
           "properties" : {
             "Party" : {
               "$ref" : "#/definitions/Party"
@@ -283,6 +284,7 @@
           }
         },
         "Delivery" : {
+          "title" : "Delivery Details",
           "properties" : {
             "ActualDeliveryDate" : {
               "type" : "string"
@@ -323,6 +325,7 @@
           }
         },
         "TaxTotal" : {
+          "title" : "TaxAmount",
           "properties" : {
             "TaxAmount" : {
               "$ref" : "#/definitions/Currency"
@@ -330,6 +333,7 @@
           }
         },
         "LegalMonetaryTotal" : {
+          "title" : "LegalMonetaryTotal",
           "properties" : {
             "LineExtensionAmount" : {
               "$ref" : "#/definitions/Currency"
@@ -390,6 +394,7 @@
           }
         },
         "Item" : {
+          "title" : "Item Identification",
           "properties" : {
             "Description" : {
               "type" : "string"
@@ -403,6 +408,7 @@
           }
         },
         "Price" : {
+          "title" : "Item Price",
           "properties" : {
             "PriceAmount" : {
               "$ref" : "#/definitions/Currency"
@@ -416,6 +422,7 @@
       }
     },
     "Currency" : {
+      "title" : "Currency",
       "properties" : {
         "currency" : {
           "type" : "string"
@@ -426,6 +433,7 @@
       }
     },
     "Party" : {
+      "title" : "Party Details",
       "properties" : {
         "PartyIdentification" : {
           "$ref" : "#/definitions/ID"
@@ -442,6 +450,7 @@
       }
     },
     "Contact" : {
+      "title" : "Contact",
       "properties" : {
         "ID" : {
           "type" : "string"
@@ -455,6 +464,7 @@
       }
     },
     "CompanyID" : {
+      "title" : "Company ID",
       "properties" : {
         "CompanyID" : {
           "type" : "string"
@@ -462,6 +472,7 @@
       }
     },
     "Address" : {
+      "title" : "Address",
       "properties" : {
         "CityName" : {
           "type" : "string"
@@ -481,6 +492,7 @@
       }
     },
     "Country" : {
+      "title" : "Country",
       "properties" : {
         "IdentificationCode" : {
           "description" : "Country Code",
@@ -489,6 +501,7 @@
       }
     },
     "AddressLine" : {
+      "title" : "Address Line",
       "properties" : {
         "Line" : {
           "type" : "string"
@@ -496,6 +509,7 @@
       }
     },
     "Name" : {
+      "title" : "Name",
       "properties" : {
         "Name" : {
           "type" : "string"
@@ -503,6 +517,7 @@
       }
     },
     "ID" : {
+      "title" : "Identification",
       "properties" : {
         "ID" : {
           "type" : "string"

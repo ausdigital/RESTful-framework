@@ -377,16 +377,19 @@
           "$ref" : "#/definitions/Currency"
         },
         "TaxTotal" : {
+          "title" : "TaxTotal",
           "properties" : {
             "TaxAmount" : {
               "$ref" : "#/definitions/Currency"
             },
             "TaxSubtotal" : {
+              "title" : "TaxSubtotal",
               "properties" : {
                 "TaxAmount" : {
                   "$ref" : "#/definitions/Currency"
                 },
                 "TaxCategory" : {
+                  "title" : "TaxCategory",
                   "properties" : {
                     "TaxScheme" : {
                       "$ref" : "#/definitions/ID"

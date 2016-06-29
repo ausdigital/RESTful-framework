@@ -478,6 +478,7 @@
         "Response" : {
           "title" : "Response Data",
           "type" : "object",
+          "required" : [ "ResponseCode", "Description" ],
           "properties" : {
             "ResponseCode" : {
               "type" : "string"

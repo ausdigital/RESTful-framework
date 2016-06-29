@@ -476,7 +476,7 @@
           }
         },
         "Response" : {
-          "title" : "Response",
+          "title" : "Response Data",
           "type" : "object",
           "properties" : {
             "ResponseCode" : {

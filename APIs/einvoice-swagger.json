@@ -456,10 +456,11 @@
       }
     },
     "DocumentResponse" : {
-      "title" : "DocumentResponse",
+      "title" : "Document Response",
       "required" : [ "DocumentReference", "Response" ],
       "properties" : {
         "DocumentReference" : {
+          "title" : "Document Reference",
           "type" : "object",
           "required" : [ "ID", "IssueDate", "DocumentTypeCode" ],
           "properties" : {
@@ -475,6 +476,7 @@
           }
         },
         "Response" : {
+          "title" : "Response",
           "type" : "object",
           "properties" : {
             "ResponseCode" : {

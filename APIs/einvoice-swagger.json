@@ -16,89 +16,6 @@
   },
   "paths" : {
     "/invoices" : {
-      "get" : {
-        "summary" : "Find Invoices",
-        "description" : "Returns the invoice or invoices matching the query parametrs",
-        "operationId" : "findInvoices",
-        "security" : [ {
-          "apikey" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "InvoiceTypeCode",
-          "in" : "query",
-          "description" : "InvoiceTypeCode to filter by",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "IssueDateFrom",
-          "in" : "query",
-          "description" : "The start of the date range in YYYY-MM-DD HH:MM:SS format",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "IssueDateTo",
-          "in" : "query",
-          "description" : "The end of the date range in YYYY-MM-DD HH:MM:SS format",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "DueDateFrom",
-          "in" : "query",
-          "description" : "The start of the date range in YYYY-MM-DD HH:MM:SS format",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "DueDateTo",
-          "in" : "query",
-          "description" : "The end of the date range in YYYY-MM-DD HH:MM:SS format",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "OrderId",
-          "in" : "query",
-          "description" : "OrderReference ID string",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "BuyerReference",
-          "in" : "query",
-          "description" : "BuyerReference ID string",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "SupplierId",
-          "in" : "query",
-          "description" : "AccountingSupplierParty identification ID string",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "CustomerId",
-          "in" : "query",
-          "description" : "AccountingCustomerParty identification ID string",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "BuyerId",
-          "in" : "query",
-          "description" : "BuyerContact identification ID string",
-          "required" : false,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "An array of invoices(invoice object may not contain entire dataset)",
-            "schema" : {
-              "$ref" : "#/definitions/Invoice"
-            }
-          },
-          "403" : {
-            "description" : "Forbidden Error"
-          },
-          "500" : {
-            "description" : "Any appropriate HTTP server error"
-          }
-        }
-      },
       "post" : {
         "summary" : "Send an invoice to the buyer",
         "description" : "Send an invoice to the buyer",
@@ -112,14 +29,14 @@
           "description" : "invoice to be sent",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/Invoice"
+            "$ref" : "#/definitions/NewInvoice"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "Invoice sent successfully",
+            "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/Invoice"
+              "$ref" : "#/definitions/ID"
             }
           },
           "403" : {
@@ -163,70 +80,34 @@
             "description" : "Any appropriate HTTP server error"
           }
         }
-      },
-      "put" : {
-        "summary" : "update an invoice",
-        "description" : "Update invoice details based on the invoice ID",
-        "operationId" : "updateInvoice",
+      }
+    },
+    "/responses" : {
+      "post" : {
+        "summary" : "POST document response",
+        "description" : "POST document response",
+        "operationId" : "createResponse",
         "security" : [ {
           "apikey" : [ ]
         } ],
         "parameters" : [ {
-          "name" : "ID",
-          "in" : "path",
-          "description" : "Invoice ID",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "name" : "invoice",
+          "name" : "response",
           "in" : "body",
-          "description" : "invoice to be sent",
+          "description" : "document response to be created",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/Invoice"
+            "$ref" : "#/definitions/Response"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "Invoice updated successfully",
+            "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/Invoice"
+              "$ref" : "#/definitions/ID"
             }
           },
           "403" : {
             "description" : "Forbidden Error"
-          },
-          "404" : {
-            "description" : "Not Found"
-          },
-          "500" : {
-            "description" : "Any appropriate HTTP server error"
-          }
-        }
-      },
-      "delete" : {
-        "summary" : "delete an invoice",
-        "description" : "Remove an invoice from the e-invoicing registry",
-        "operationId" : "deleteInvoice",
-        "security" : [ {
-          "apikey" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "ID",
-          "in" : "path",
-          "description" : "Invoice ID",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "204" : {
-            "description" : "Invoice deleted successfully"
-          },
-          "403" : {
-            "description" : "Forbidden Error"
-          },
-          "404" : {
-            "description" : "Not Found"
           },
           "500" : {
             "description" : "Any appropriate HTTP server error"
@@ -236,11 +117,57 @@
     }
   },
   "definitions" : {
-    "Invoice" : {
+    "Response" : {
+      "title" : "Document Response",
+      "type" : "object",
+      "required" : [ "UBLVersionID", "CustomizationID", "ProfileID", "IssueDate", "SenderParty", "ReceiverParty", "DocumentResponse" ],
       "properties" : {
-        "ID" : {
+        "UBLVersionID" : {
           "type" : "string"
         },
+        "CustomizationID" : {
+          "type" : "string"
+        },
+        "ProfileID" : {
+          "type" : "string"
+        },
+        "IssueDate" : {
+          "type" : "string"
+        },
+        "SenderParty" : {
+          "title" : "Sender Party",
+          "properties" : {
+            "Party" : {
+              "$ref" : "#/definitions/Party"
+            }
+          }
+        },
+        "ReceiverParty" : {
+          "title" : "Receiver Party",
+          "properties" : {
+            "Party" : {
+              "$ref" : "#/definitions/Party"
+            }
+          }
+        },
+        "DocumentResponse" : {
+          "$ref" : "#/definitions/DocumentResponse"
+        }
+      }
+    },
+    "Invoice" : {
+      "title" : "Invoice",
+      "type" : "object",
+      "allOf" : [ {
+        "$ref" : "#/definitions/NewInvoice"
+      }, {
+        "$ref" : "#/definitions/ID"
+      } ]
+    },
+    "NewInvoice" : {
+      "title" : "NewInvoice",
+      "required" : [ "IssueDate", "DueDate", "InvoiceTypeCode", "BuyerReference", "OrderReference", "AccountingSupplierParty", "AccountingCustomerParty" ],
+      "properties" : {
         "IssueDate" : {
           "type" : "string",
           "format" : "date"
@@ -329,6 +256,7 @@
         },
         "TaxTotal" : {
           "title" : "TaxAmount",
+          "required" : [ "TaxAmount" ],
           "properties" : {
             "TaxAmount" : {
               "$ref" : "#/definitions/Currency"
@@ -430,6 +358,7 @@
     },
     "Currency" : {
       "title" : "Currency",
+      "required" : [ "currency", "value" ],
       "properties" : {
         "currency" : {
           "type" : "string"
@@ -441,6 +370,7 @@
     },
     "Party" : {
       "title" : "Party Details",
+      "required" : [ "PartyIdentification", "PartyName" ],
       "properties" : {
         "PartyIdentification" : {
           "$ref" : "#/definitions/ID"
@@ -472,6 +402,7 @@
     },
     "CompanyID" : {
       "title" : "Company ID",
+      "required" : [ "CompanyID" ],
       "properties" : {
         "CompanyID" : {
           "type" : "string"
@@ -517,14 +448,48 @@
     },
     "Name" : {
       "title" : "Name",
+      "required" : [ "Name" ],
       "properties" : {
         "Name" : {
           "type" : "string"
         }
       }
     },
+    "DocumentResponse" : {
+      "title" : "DocumentResponse",
+      "required" : [ "DocumentReference", "Response" ],
+      "properties" : {
+        "DocumentReference" : {
+          "type" : "object",
+          "required" : [ "ID", "IssueDate", "DocumentTypeCode" ],
+          "properties" : {
+            "ID" : {
+              "type" : "string"
+            },
+            "IssueDate" : {
+              "type" : "string"
+            },
+            "DocumentTypeCode" : {
+              "type" : "string"
+            }
+          }
+        },
+        "Response" : {
+          "type" : "object",
+          "properties" : {
+            "ResponseCode" : {
+              "type" : "string"
+            },
+            "Description" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
     "ID" : {
-      "title" : "Identification",
+      "title" : "Identification GUID",
+      "required" : [ "ID" ],
       "properties" : {
         "ID" : {
           "type" : "string"
